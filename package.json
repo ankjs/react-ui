@@ -1,6 +1,6 @@
 {
   "name": "@ankjs/react-ui",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "React User Interface Components",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -22,7 +22,7 @@
   "peerDependencies": {
     "react": ">=16"
   },
-  "author": "@ankhema",
+  "author": "@ankjs",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/ankjs/react-ui/issues"

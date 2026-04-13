@@ -3,7 +3,7 @@
  *  Filename: index.ts // MAIN
  */
 
-// ALL COMPONENTS EXPORT
+import * as provider from './provider'
 
 // PROVDER
 
@@ -30,3 +30,6 @@ export * from './hooks'
  * useThemeColors
  * useLocalStroage
  */
+export default provider;
+
+

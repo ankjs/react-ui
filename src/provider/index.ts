@@ -4,4 +4,6 @@ File: provider/index.ts
 */
 import AnkThemeProvider from './AnkThemeProvider'
 
-export { AnkThemeProvider }
+export { 
+  AnkThemeProvider 
+}
