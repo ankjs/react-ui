@@ -7,25 +7,25 @@ import AnkThemeProvider from './provider/AnkThemeProvider'
 
 // PROVDER
 
-export * from './components'
 /*
+export * from './components'
  * Input
+export * from './contexts'
+export * from './view'
+export * from './hooks'
  */
 
 // ALL THEM COMPONENTS
-export * from './view'
 /*
 PageView
 */
 
 // ALL CONTEXT EXPORT
-export * from './contexts'
 /*
  * AnkThemeContext
  */
 
 //ALL HOOKS EXPORT
-export * from './hooks'
 /*
  * useThemeColors
  * useLocalStroage

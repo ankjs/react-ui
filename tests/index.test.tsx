@@ -7,15 +7,10 @@
 import * as React from 'react'
 import { render } from '@testing-library/react'
 import 'jest-canvas-mock'
-import { AnkThemeProvider } from '../src/provider'
-
+import AnkThemeProvider from '../src/provider/AnkThemeProvider'
 
 describe('Common render', () => {
   it('renders without crashing', () => {
-    render(
-      <AnkThemeProvider>
-
-      </AnkThemeProvider>,
-    )
+    render(<AnkThemeProvider />)
   })
 })
