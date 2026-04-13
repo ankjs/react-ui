@@ -9,7 +9,7 @@ export default {
   input: "src/index.ts",
   output: [
     {
-      dir: "dist", // 'file' এর বদলে 'dir' ব্যবহার করা টাইপ ফাইল তৈরির জন্য ভালো
+      dir: "dist", 
       format: "cjs",
       entryFileNames: "index.js",
       sourcemap: true,
@@ -22,7 +22,7 @@ export default {
     },
   ],
   plugins: [
-    peerDepsExternal(), // React-কে বান্ডেল হওয়া থেকে আটকাবে
+    peerDepsExternal(), 
     resolve({
       extensions: [".ts", ".tsx", ".js", ".jsx"]
     }),
