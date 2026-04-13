@@ -1,9 +1,9 @@
 /*
-* 
-* Copyright (c) [2026] [ankjs]
-* Filename: useElementDimensions.tsx
-* 
-*/
+ *
+ * Copyright (c) [2026] [ankjs]
+ * Filename: useElementDimensions.tsx
+ *
+ */
 import { useState, useRef, useEffect, RefObject } from 'react'
 
 // Define the shape of the dimensions object

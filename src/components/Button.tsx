@@ -12,8 +12,8 @@ import { ButtonProps } from '../types/buttonTypes'
 const Button: React.FC<ButtonProps> = ({
   children,
   name = '',
-  onClick = () => { },
-  onSubmit = () => { },
+  onClick = () => {},
+  onSubmit = () => {},
   disable = false,
   width = '100%',
   height = '40px',

@@ -10,6 +10,24 @@ Some Rect Components from for time save.
 [![Build Status][ci-image]][ci-url]
 [![Test Coverage][coveralls-image]][coveralls-url]
 
+
+[npm-image]: https://img.shields.io/npm/v/@ankjs/react-ui.svg
+[npm-url]: https://www.npmjs.com/package/@ankjs/react-ui
+
+[downloads-image]: https://img.shields.io/npm/dm/@ankjs/react-ui.svg
+[downloads-url]: https://www.npmjs.com/package/@ankjs/react-ui
+
+[node-version-image]: https://img.shields.io/node/v/@ankjs/react-ui.svg
+[node-version-url]: https://nodejs.org/
+
+[ci-image]: https://img.shields.io/github/actions/workflow/status/ankjs/react-ui/ci.yml
+[ci-url]: https://github.com/ankjs/react-ui/actions
+
+[coveralls-image]: https://img.shields.io/coveralls/github/ankjs/react-ui
+[coveralls-url]: https://coveralls.io/github/ankjs/react-ui
+
+
+
 ___
 ## 🖥️ Installation
 

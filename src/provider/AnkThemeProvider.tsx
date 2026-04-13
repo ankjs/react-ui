@@ -46,7 +46,7 @@ const AnkThemeProvider = ({ children, colorsObjectProvide, colorsObject, default
           ...colorsObjectProvide,
         }}
       >
-        {children}
+        <div>{children}</div>
       </ColorsProvidedContext.Provider>
     </AnkThemeContext.Provider>
   )

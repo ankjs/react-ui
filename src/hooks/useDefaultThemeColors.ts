@@ -1,7 +1,7 @@
 /*
-* Copyright (c) [2026] [ankjs]
-* Filename: useElementDimensions.tsx
-*/
+ * Copyright (c) [2026] [ankjs]
+ * Filename: useElementDimensions.tsx
+ */
 import { useContext } from 'react'
 import AnkThemeContext from '../contexts/AnkThemeContext'
 import { light, dark } from '../constants/colors'
