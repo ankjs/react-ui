@@ -3,7 +3,8 @@
  *  Filename: index.ts // MAIN
  */
 
-import * as provider from './provider'
+import AnkThemeProvider from './provider/AnkThemeProvider'
+
 
 // PROVDER
 
@@ -30,6 +31,5 @@ export * from './hooks'
  * useThemeColors
  * useLocalStroage
  */
-export default provider;
 
-
+export default AnkThemeProvider;
