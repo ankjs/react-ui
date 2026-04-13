@@ -1,3 +1,0 @@
-## ankhema-react
-
-### 🪝 useWebDimensions Hook
