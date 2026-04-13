@@ -5,7 +5,6 @@
 
 import AnkThemeProvider from './provider/AnkThemeProvider'
 
-
 // PROVDER
 
 export * from './components'
@@ -32,4 +31,4 @@ export * from './hooks'
  * useLocalStroage
  */
 
-export default AnkThemeProvider;
+export default AnkThemeProvider
