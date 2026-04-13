@@ -3,8 +3,7 @@
 ## 📜 Introduction
 Some Rect Components from for time save.
 
-
-[![NPM Version][npm-image]][npm-url]
+[![NPM Version][npm-image]][https://img.shields.io/npm/v/@ankjs/react-ui.svg]
 [![NPM Downloads][downloads-image]][downloads-url]
 [![Node.js Version][node-version-image]][node-version-url]
 [![Build Status][ci-image]][ci-url]
