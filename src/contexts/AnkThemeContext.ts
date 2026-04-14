@@ -4,7 +4,7 @@
 
 
 import { createContext } from 'react';
-import { ThemeContextType, ColorsObject } from '../types/themeTypes';
+import type{ ThemeContextType, ColorsObject } from '../types/themeTypes';
 
 
 

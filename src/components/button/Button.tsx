@@ -1,5 +1,5 @@
 import React from 'react';
-import { ButtonProps } from '../../types/buttonTypes';
+import type { ButtonProps } from '../../types/buttonTypes';
 
 
 

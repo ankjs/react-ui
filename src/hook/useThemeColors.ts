@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { AnkThemeContext, ColorContext } from '../contexts/AnkThemeContext';
-import { ThemeContextType } from '../types/themeTypes';
+import type { ThemeContextType } from '../types/themeTypes';
 
 
 import { light as defaultLight, dark as defaultDark } from '../constants/colors'

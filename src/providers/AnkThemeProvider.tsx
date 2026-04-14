@@ -10,7 +10,7 @@ import {
   AnkThemeContext,
   ColorContext
 } from '../contexts/AnkThemeContext';
-import { ThemeProviderProps } from '../types/themeTypes';
+import type { ThemeProviderProps } from '../types/themeTypes';
 import useSystemTheme from '../hook/useSystemTheme';
 //import MainUiView from './MainUiView';
 
