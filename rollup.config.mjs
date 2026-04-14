@@ -13,14 +13,14 @@ export default {
       dir: "dist",
       format: "cjs",
       entryFileNames: "index.cjs",
-      sourcemap: true,
       exports: "named",
+      sourcemap: false,
     },
     {
       dir: "dist",
       format: "esm",
       entryFileNames: "index.esm.js",
-      sourcemap: true,
+      sourcemap: false,
     },
   ],
   
@@ -40,6 +40,22 @@ export default {
 
 
 /*
+
+
+output: [
+  {
+    dir: "dist",
+    format: "cjs",
+    entryFileNames: "index.cjs",
+    sourcemap: false, // এখানে false করে দিন
+  },
+  {
+    dir: "dist",
+    format: "esm",
+    entryFileNames: "index.esm.js",
+    sourcemap: false, // এখানেও false করে দিন
+  },
+],
 plugins: [
     peerDepsExternal(),
     resolve({
