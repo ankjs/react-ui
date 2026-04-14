@@ -13,11 +13,13 @@ export interface ThemeHookReturn extends ColorPalette {
 }
 
 export type ThemeProviderProps = {
+  children: ReactNode; // Fixes the "Type {} is not assignable to ReactNode" error
   colorsObjectProvide?: any,
   colorsObject?: any,
+  autoApply?: boolean,
   defaultThemeMode?: 'light' | 'dark' | 'system',
   style?: CSSProperties,
-  children: ReactNode; // Fixes the "Type {} is not assignable to ReactNode" error
+  overflow?: CSSProperties['overflow']
 }
 
 export type ThemeContextType = {
