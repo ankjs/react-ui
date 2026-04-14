@@ -14,13 +14,13 @@ export default {
       format: "cjs",
       entryFileNames: "index.cjs",
       exports: "named",
-      sourcemap: false,
+      sourcemap: true,
     },
     {
       dir: "dist",
       format: "esm",
       entryFileNames: "index.esm.js",
-      sourcemap: false,
+      sourcemap: true,
     },
   ],
   
