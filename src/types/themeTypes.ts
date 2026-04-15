@@ -7,6 +7,7 @@ export interface ColorsObject {
   system?: any,
 }
 export type ThemeModeType = 'light' | 'dark' | 'system'
+export type Theme = 'light' | 'dark'
 
 export interface ThemeHookReturn extends ColorPalette {
   themeMode: ThemeModeType | undefined // The resolved or default theme mode
@@ -20,12 +21,14 @@ export type ThemeProviderProps = {
   defaultThemeMode?: 'light' | 'dark' | 'system',
   style?: CSSProperties,
   overflow?: CSSProperties['overflow']
-  color?: CSSProperties['color']
+  color?: CSSProperties['color'],
+  backgroundColor?: CSSProperties['backgroundColor'],
 }
 
 export type ThemeContextType = {
   theme?: 'light' | 'dark' | 'system',
   themeMode?: string,
+  themeType?: string,
   setTheme: Dispatch<SetStateAction<'light' | 'dark'>>;
   setDarkTheme?: () => void,
   setLightTheme?: () => void,

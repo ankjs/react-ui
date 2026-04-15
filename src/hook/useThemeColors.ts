@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { AnkThemeContext, ColorContext } from '../contexts/AnkThemeContext';
-import type { ThemeContextType } from '../types/themeTypes';
+import type { ThemeContextType, Theme } from '../types/themeTypes';
 
 
 import { light as defaultLight, dark as defaultDark } from '../constants/colors'
@@ -12,7 +12,7 @@ const defaultColorsObject = {
 
 
 
-const useThemeColors = (): ThemeContextType | undefined => {
+const useThemeColors = (props?: Theme) => {
   const context = useContext(AnkThemeContext);
 
 
@@ -35,7 +35,7 @@ const useThemeColors = (): ThemeContextType | undefined => {
   const themeMode = context.themeType || undefined;
 
 
-  
+
 
   if (theme === undefined || themeMode === undefined) {
     throw new Error(` * useThemeColors must be used within a AnkThemeProvider * \n like this - \n import  AnkThemeProvider  from '@ankjs/react-ui;
