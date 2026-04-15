@@ -15,6 +15,7 @@ const defaultColorsObject = {
 const useThemeColors = (): ThemeContextType | undefined => {
   const context = useContext(AnkThemeContext);
 
+
   if (!context) {
     throw new Error(` * useThemeColors must be used within a AnkThemeProvider * \n like this - \n import  AnkThemeProvider  from '@ankjs/react-ui;
     
@@ -23,13 +24,18 @@ const useThemeColors = (): ThemeContextType | undefined => {
         </AnkThemeProvider>
     `)
   };
+
+
   const { light, dark } = useContext(ColorContext) ?? defaultColorsObject;
 
   const reLight = light ?? defaultLight;
   const reDark = dark ?? defaultDark;
 
   const theme = context.theme || undefined;
-  const themeMode = context.themeMode || undefined;
+  const themeMode = context.themeType || undefined;
+
+
+  
 
   if (theme === undefined || themeMode === undefined) {
     throw new Error(` * useThemeColors must be used within a AnkThemeProvider * \n like this - \n import  AnkThemeProvider  from '@ankjs/react-ui;

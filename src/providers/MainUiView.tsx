@@ -12,16 +12,34 @@ const MainUiView = (props: MainPropsType) => {
     autoApply,
     style,
     overflow,
+    backgroundColor,
+    fontolor
   } = props;
 
-  const mainBgColor = useThemeColors();
+  const colors = useThemeColors();
+  const {
+    mainBgColor, color
+  } = useThemeColors();
+
+  const bg = autoApply ? mainBgColor : backgroundColor
+  const text = autoApply ? color: fontolor ;
+
+  const styleContener = {
+    backgroundColor: bg,
+    color: text,
+    height: "100dvh",
+    width: "100%",
+    overflow,
+    ...style
+  }
 
 
   return (
     <div
+      style={styleContener}
     >
       {
-        JSON.stringify(mainBgColor)
+        JSON.stringify(colors)
       }
       {children}
     </div>

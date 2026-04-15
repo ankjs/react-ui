@@ -9,5 +9,6 @@ export type MainPropsType = {
   children: ReactNode,
   autoApply: boolean,
   style?: CSSProperties,
-  overflow?: CSSProperties['overflow']
+  overflow?: CSSProperties['overflow'],
+  fontolor?: CSSProperties['color']
 }

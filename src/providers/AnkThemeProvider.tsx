@@ -5,7 +5,7 @@ Copyright (c) [2026] [ankjs]
 Filename: AnkThemeProvider.tsx
 */
 
-import React, { useState, useCallback, useMemo } from 'react';
+import React, { useState, useCallback, useMemo, useEffect } from 'react';
 import {
   AnkThemeContext,
   ColorContext
@@ -28,7 +28,9 @@ const AnkThemeProvider = (props: ThemeProviderProps) => {
     defaultThemeMode = "system",
     autoApply = true,
     style = {},
-    overflow = 'visible',
+    overflow = 'scroll',
+    backgroundColor = "pink",
+    color = "black"
   } = props;
 
 
@@ -48,23 +50,32 @@ const AnkThemeProvider = (props: ThemeProviderProps) => {
 
 
 
+  useEffect(() => {
+    if (defaultThemeMode === 'system') {
+      setTheme(initialActiveTheme);
+      return setThemeType('system');
+    };
+  }, [defaultThemeMode, initialActiveTheme, setTheme, setThemeType]);
+
+
+
   const setDarkTheme = useCallback(() => {
     if (theme === 'dark') return;
     setThemeType('dark');
-    setTheme('dark');
+    return setTheme('dark');
   }, [theme, setThemeType, setTheme]);
 
   const setLightTheme = useCallback(() => {
     if (theme === 'light') return;
     setThemeType('light');
-    setTheme('light');
+    return setTheme('light');
   }, [theme, setThemeType, setTheme]);
 
   const setSystemTheme = useCallback(() => {
     if (themeType === 'system') return
     setThemeType('system');
-    setTheme(system);
-  }, [theme, setTheme, system, setThemeType]);
+    return setTheme(system);
+  }, [themeType, setTheme, system, setThemeType]);
 
 
 
@@ -78,7 +89,7 @@ const AnkThemeProvider = (props: ThemeProviderProps) => {
       setLightTheme,
       setSystemTheme,
     }),
-    [theme, setTheme, setDarkTheme, setLightTheme, setSystemTheme],
+    [theme, themeType, setTheme, setDarkTheme, setLightTheme, setSystemTheme],
   );
 
 
@@ -100,7 +111,10 @@ const AnkThemeProvider = (props: ThemeProviderProps) => {
           autoApply={autoApply}
           style={style}
           overflow={overflow}
+          backgroundColor={backgroundColor}
+          fontolor={color}
         >
+
           {children}
         </MainUiView>
       </ColorContext.Provider>
@@ -108,3 +122,6 @@ const AnkThemeProvider = (props: ThemeProviderProps) => {
   )
 };
 export default AnkThemeProvider;
+
+/*
+      */

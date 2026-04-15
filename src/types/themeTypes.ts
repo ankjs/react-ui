@@ -20,6 +20,7 @@ export type ThemeProviderProps = {
   defaultThemeMode?: 'light' | 'dark' | 'system',
   style?: CSSProperties,
   overflow?: CSSProperties['overflow']
+  color?: CSSProperties['color']
 }
 
 export type ThemeContextType = {
