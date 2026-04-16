@@ -1,5 +1,5 @@
 import {
-  ReactNode, ComponentType
+  ReactNode, ComponentType, CSSProperties
 } from 'react';
 
 
@@ -22,6 +22,7 @@ export interface BrowserRouterProps {
   authStatus: boolean;
   loginPath?: string;
   globalFallback?: ReactNode;
+  style?: CSSProperties
 }
 
 

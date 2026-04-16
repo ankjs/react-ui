@@ -9,7 +9,7 @@ import {
 } from 'react-router-dom';
 
 import type { BrowserRouterProps, RouterProtectProps } from '../types/browserRouterTypes'
-
+import useThemeColors from '../hook/useThemeColors'
 
 
 
@@ -28,12 +28,30 @@ const AuthGuard: React.FC<RouterProtectProps> = ({
   return <>{children}</>;
 };
 
+
+
+
 const BrowserRouter: React.FC<BrowserRouterProps> = ({
   routes,
   authStatus,
   loginPath = "/login",
-  globalFallback = <div>Loading...</div>
+  globalFallback = <div>Loading...</div>,
+  style = {}
 }) => {
+
+  const {
+    backgroundColor,
+  } = style;
+
+  const { pageBg } = useThemeColors();
+  
+  const divStypContener = {
+    background: backgroundColor ? backgroundColor : pageBg,
+    ...style
+  };
+
+
+
 
   const router = useMemo(() => {
     const routesData = routes.map((route) => {
@@ -50,7 +68,11 @@ const BrowserRouter: React.FC<BrowserRouterProps> = ({
       const ComponentToRender = importFunc ? lazy(importFunc) : null;
 
       const finalElement = (
-        <>
+        <div
+          style={
+            divStypContener
+          }
+        >
           <ScrollRestoration
             getKey={(location) =>
               scrollType === "reset" ? location.key : "app-global-scroll"
@@ -65,7 +87,7 @@ const BrowserRouter: React.FC<BrowserRouterProps> = ({
               element || (ComponentToRender && <ComponentToRender />)
             )}
           </Suspense>
-        </>
+        </div>
       );
 
       return { path, element: finalElement };
