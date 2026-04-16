@@ -2,5 +2,9 @@
 
 
 
-export * from './button/index'
-export * from './input/index'
+import Button from './button/Button'
+
+
+export {
+  Button
+}
