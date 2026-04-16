@@ -15,6 +15,7 @@ export interface RouteConfig {
   fallback?: ReactNode;
   scrollType?: "reset" | "same-area";
   protectRouter?: boolean;
+  routerType : 'page'|'tab'
 };
 
 export interface BrowserRouterProps {

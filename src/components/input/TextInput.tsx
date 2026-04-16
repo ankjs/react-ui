@@ -6,23 +6,52 @@ import useThemeColors from '../../hook/useThemeColors';
 
 
 
-const Input = (props: InputProps) => {
+const TextInput = (props: InputProps) => {
   const {
+    id = "",
     name = "",
+    className = "",
     label = "",
     placeholder = "",
     value = "",
+    readOnly = false,
+    defaultValue = "",
+    minLength,
+    maxLength,
+    min,
+    max,
+    ref,
+    spellCheck = false,
+    autoComplete = "off",
+    inputMode = "text",
+    type = "text",
     onChange = (val) => { },
     onChangeEvent = (e) => { },
+    onKeyDown = () => { },
+    onKeyUp = () => { },
+    onKeyPress = () => { },
+    onDoubleClick = () => { },
+    onFocus = () => { },
+    onBlur = () => { },
+    onInput = () => { },
+    onInvalid = () => { },
+    onCopy = () => { },
+    onPaste = () => { },
+    onCut = () => { },
     error = "",
     disabled = false,
     required = false,
     children,
+    autoCapitalize = "characters",
+    enterKeyHint,
+    form,
+    formAction,
+    formMethod,
     style = {},
   } = props;
 
 
-  const inputName = name ? name : label;
+
 
 
 
@@ -34,9 +63,9 @@ const Input = (props: InputProps) => {
     inputColorDeactivate
   } = useThemeColors();
 
-  const defColor = disabled ? inputColorDeactivate : inputColorActive;
-  const defBrColor = disabled ? inputColorDeactivate : inputColorActive;
-  const defBgColor = disabled ? inputBgDeactivate : inputBgActive;
+  const defColor = (disabled || readOnly) ? inputColorDeactivate : inputColorActive;
+  const defBrColor = (disabled || readOnly) ? inputColorDeactivate : inputColorActive;
+  const defBgColor = (disabled || readOnly) ? inputBgDeactivate : inputBgActive;
 
 
   const {
@@ -90,7 +119,7 @@ const Input = (props: InputProps) => {
         style={divStyleContener}
       >
         <div>
-          {inputName}
+          {label}
           <span
             style={{
               color: "red"
@@ -103,15 +132,42 @@ const Input = (props: InputProps) => {
         </div>
 
         <input
+          id={id}
+          name={name ? name : label}
+          className={className}
           style={inputStyle}
           value={value}
           onChange={(e) => {
             onChange(e.target.value);
             onChangeEvent(e);
           }}
+          minLength={minLength}
+          maxLength={maxLength}
+          min={min}
+          max={max}
           disabled={disabled}
+          readOnly={readOnly}
+          ref={ref}
+          onKeyDown={onKeyDown}
+          onKeyUp={onKeyUp}
+          onKeyPress={onKeyPress}
+          onDoubleClick={onDoubleClick}
+          onFocus={onFocus}
+          onBlur={onBlur}
+          onInput={onInput}
+          onInvalid={onInvalid}
+          spellCheck={spellCheck}
+          autoComplete={autoComplete}
+          inputMode={inputMode || type}
+          onCopy={onCopy}
+          onPaste={onPaste}
+          onCut={onCut}
+          autoCapitalize={autoCapitalize}
+          enterKeyHint={enterKeyHint}
+          form={form}
+          formAction={formAction}
+          formMethod={formMethod}
         />
-
         {children && children}
       </div>
 
@@ -127,4 +183,4 @@ const Input = (props: InputProps) => {
     </div>
   );
 };
-export default Input;
+export default TextInput;

@@ -41,16 +41,16 @@ const BrowserRouter: React.FC<BrowserRouterProps> = ({
 
   const {
     backgroundColor,
+    height="100dvh"
   } = style;
 
   const { pageBg } = useThemeColors();
   
   const divStypContener = {
     background: backgroundColor ? backgroundColor : pageBg,
+    height,
     ...style
   };
-
-
 
 
   const router = useMemo(() => {
