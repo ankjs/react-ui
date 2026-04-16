@@ -18,18 +18,17 @@ const Button = (props: ButtonProps) => {
 
   const {
     width = "100%",
-    height = "40px",
+    height = "30px",
     borderWidth = "1px",
     cursor = "pointer",
     borderColor = "",
     outline = "none",
     borderStyle = "solid",
     color = "",
-    fontSize = 16,
+    fontSize = 14,
     fontWeight = 'bold',
     borderRadius = 5,
     backgroundColor = "",
-
   } = style;
 
 
@@ -41,7 +40,7 @@ const Button = (props: ButtonProps) => {
     buttonColorActive,
     buttonColorDeactivate
   } = useThemeColors();
-  
+
   const btnColor = useThemeColors();
 
   const defColor = disabled ? buttonColorDeactivate : buttonColorActive;
@@ -58,17 +57,15 @@ const Button = (props: ButtonProps) => {
     fontWeight,
     borderRadius,
     cursor: disabled ? "none" : cursor,
+    borderColor: borderColor ? borderColor : defBgColot,
     color: color ? color : defColor,
-    borderColor: borderColor ? borderColor : defBrColor,
-    backgroundColpr: backgroundColor ? backgroundColor : defBgColot,
+    backgroundColor: backgroundColor ? backgroundColor : defBgColot,
     ...style
   };
 
 
 
   return (
-    <>
-    {JSON.stringify(btnColor)}
     <button
       style={styleContener}
       onClick={() => {
@@ -83,7 +80,7 @@ const Button = (props: ButtonProps) => {
     >
       {btnName ? btnName : children}
     </button >
-    </>
+
   );
 };
 export default Button;
