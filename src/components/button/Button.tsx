@@ -12,21 +12,28 @@ const Button = (props: ButtonProps) => {
     onClick = () => { },
     onSubmit = () => { },
     disabled = false,
+    style = {}
+  } = props;
+  const btnName = name ? name : label;
+
+  const {
     width = "100%",
     height = "40px",
     borderWidth = "1px",
     cursor = "pointer",
-    borderColor,
+    borderColor = "",
     outline = "none",
     borderStyle = "solid",
-    color,
+    color = "",
     fontSize = 16,
     fontWeight = 'bold',
     borderRadius = 5,
     backgroundColor = "",
-    style = {}
-  } = props;
-  const btnName = name ? name : label;
+
+  } = style;
+
+
+
 
   const {
     buttonBgActive,
@@ -34,6 +41,8 @@ const Button = (props: ButtonProps) => {
     buttonColorActive,
     buttonColorDeactivate
   } = useThemeColors();
+  
+  const btnColor = useThemeColors();
 
   const defColor = disabled ? buttonColorDeactivate : buttonColorActive;
   const defBrColor = disabled ? buttonColorDeactivate : buttonColorActive;
@@ -58,6 +67,8 @@ const Button = (props: ButtonProps) => {
 
 
   return (
+    <>
+    {JSON.stringify(btnColor)}
     <button
       style={styleContener}
       onClick={() => {
@@ -72,6 +83,7 @@ const Button = (props: ButtonProps) => {
     >
       {btnName ? btnName : children}
     </button >
+    </>
   );
 };
 export default Button;
