@@ -38,9 +38,6 @@ const MainUiView = (props: MainPropsType) => {
     <div
       style={styleContener}
     >
-      {
-        JSON.stringify(colors)
-      }
       {children}
     </div>
   )

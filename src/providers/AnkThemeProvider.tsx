@@ -114,7 +114,6 @@ const AnkThemeProvider = (props: ThemeProviderProps) => {
           backgroundColor={backgroundColor}
           fontolor={color}
         >
-
           {children}
         </MainUiView>
       </ColorContext.Provider>
