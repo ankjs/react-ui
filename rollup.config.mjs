@@ -1,4 +1,4 @@
-
+//rollup.config.mjs
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import typescript from "@rollup/plugin-typescript";
@@ -13,6 +13,7 @@ export default {
       dir: "dist",
       format: "cjs",
       entryFileNames: "index.cjs",
+      banner: "'use client';", // বিল্ড ফাইলের একদম উপরে এটি যোগ করবে
       exports: "named",
       sourcemap: true,
     },
@@ -20,10 +21,11 @@ export default {
       dir: "dist",
       format: "esm",
       entryFileNames: "index.esm.js",
+      banner: "'use client';",
       sourcemap: true,
     },
   ],
-  
+
   plugins: [
     peerDepsExternal(),
     resolve(),
@@ -35,8 +37,23 @@ export default {
       // আলাদা করে compilerOptions এখানে না দিয়ে tsconfig থেকে নেওয়াই ভালো
     }),
   ],
-  external: ["react", "react-dom", "react/jsx-runtime"], 
+  external: ["react", "react-dom", 'react-router-dom', "react/jsx-runtime"],
+  onwarn(warning, warn) {
+    // "use client" সংক্রান্ত ওয়ার্নিং ইগনোর করার জন্য
+    if (warning.code === 'MODULE_LEVEL_DIRECTIVE' && warning.message.includes('use client')) {
+      return;
+    }
+    warn(warning);
+  },
 };
+
+
+
+
+
+
+
+
 
 
 /*

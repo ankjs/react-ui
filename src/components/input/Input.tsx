@@ -1,6 +1,6 @@
 import React from 'react';
 import type { InputProps } from '../../types/inputTypes'
-import useThemeColors  from '../../hook/useThemeColors';
+import useThemeColors from '../../hook/useThemeColors';
 
 
 
@@ -13,7 +13,7 @@ const Input = (props: InputProps) => {
     placeholder = "",
     value = "",
     onChange = (val) => { },
-    onChangeEvent,
+    onChangeEvent = (e) => { },
     error = "",
     disabled = false,
     required = false,
@@ -105,10 +105,9 @@ const Input = (props: InputProps) => {
         <input
           style={inputStyle}
           value={value}
-          onChangeEvent={onChangeEvent}
           onChange={(e) => {
-            let val = e.target.value;
-            onChange(val);
+            onChange(e.target.value);
+            onChangeEvent(e);
           }}
           disabled={disabled}
         />
