@@ -37,15 +37,16 @@ const BrowserRouter: React.FC<BrowserRouterProps> = ({
   };
 
   const {
-    backgroundColor,
-    height = "100dvh"
+    backgroundColor = "",
+    height = "100dvh",
+    overflow='scroll',
+    scrollBehavior= "smooth" 
   } = style;
 
   const { pageBg } = useThemeColors();
 
   const divStypContener = {
     background: backgroundColor ? backgroundColor : pageBg,
-    height,
     ...style
   };
 

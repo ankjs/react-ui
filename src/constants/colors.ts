@@ -5,7 +5,7 @@ export const light = {
   primary: 'red',
   primaryDeep: "#8404043b",
   primaryColor: 'red',
-  pageBg: '#8d8d8d',
+  pageBg: '#cccccc',
   mainBgColor: '#fff',
   backgroundColor: '#f0f0f0',
   secondryBgColor: '#808080',
