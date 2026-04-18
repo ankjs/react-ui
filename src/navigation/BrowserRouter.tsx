@@ -47,6 +47,9 @@ const BrowserRouter: React.FC<BrowserRouterProps> = ({
 
   const divStypContener = {
     background: backgroundColor ? backgroundColor : pageBg,
+        height,
+    overflow,
+    scrollBehavior,
     ...style
   };
 
