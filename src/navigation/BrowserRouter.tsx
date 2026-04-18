@@ -12,8 +12,6 @@ import AuthGuard from './AuthGuard';
 
 
 
-
-
 const BrowserRouter: React.FC<BrowserRouterProps> = ({
   routes = [],
   authStatus = false,
@@ -39,8 +37,8 @@ const BrowserRouter: React.FC<BrowserRouterProps> = ({
   const {
     backgroundColor = "",
     height = "100dvh",
-    overflow='scroll',
-    scrollBehavior= "smooth" 
+    overflow = 'scroll',
+    scrollBehavior = "smooth"
   } = style;
 
   const { mainBgColor, color } = useThemeColors();
