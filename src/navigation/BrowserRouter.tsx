@@ -9,7 +9,7 @@ import {
 import type { BrowserRouterProps } from '../types/browserRouterTypes'
 import useThemeColors from '../hook/useThemeColors';
 import AuthGuard from './AuthGuard';
-
+import { RouterContext } from '../contexts/RouterContext'
 
 
 const BrowserRouter: React.FC<BrowserRouterProps> = ({
@@ -53,6 +53,8 @@ const BrowserRouter: React.FC<BrowserRouterProps> = ({
   };
 
 
+
+
   const router = useMemo(() => {
 
     const routesData = routes?.map((route) => {
@@ -72,7 +74,6 @@ const BrowserRouter: React.FC<BrowserRouterProps> = ({
           `path not defined`
         )
       };
-
 
       // যদি importFunc থাকে তবে lazy load করবে, নতুবা সরাসরি element ব্যবহার করবে
       const ComponentToRender = importFunc ? lazy(importFunc) : null;
@@ -109,6 +110,17 @@ const BrowserRouter: React.FC<BrowserRouterProps> = ({
     return createBrowserRouter(routesData);
 
   }, [routes, authStatus, loginPath, globalFallback]);
-  return <RouterProvider router={router} />;
+
+  return (
+    <RouterContext.Provider
+      value={{
+        routes,
+        authStatus,
+        loginPath
+      }}
+    >
+      <RouterProvider router={router} />
+    </RouterContext.Provider>
+  )
 };
 export default BrowserRouter;

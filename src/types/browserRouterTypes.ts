@@ -7,7 +7,7 @@ import {
 
 
 export interface RouteConfig {
-  path: string;
+  path?: string;
   // ইউজার এখানে () => import('./...') ফাংশনটি পাঠাবে
   importFunc?: () => Promise<{ default: ComponentType<any> }>;
   // অথবা সরাসরি কম্পোনেন্ট পাঠাতে পারবে
@@ -34,7 +34,11 @@ export type RouterProtectProps = {
 };
 
 
-
+export type RouterContexTypes = {
+  routes?: RouteConfig[],
+  authStatus?: boolean,
+  loginPath: string,
+}
 
 
 
