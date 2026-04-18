@@ -15,12 +15,12 @@ export interface RouteConfig {
   fallback?: ReactNode;
   scrollType?: "reset" | "same-area";
   protectRouter?: boolean;
-  routerType : 'page'|'tab'
+  routerType?: 'link' | 'tab'
 };
 
 export interface BrowserRouterProps {
   routes: RouteConfig[];
-  authStatus: boolean;
+  authStatus?: boolean;
   loginPath?: string;
   globalFallback?: ReactNode;
   style?: CSSProperties

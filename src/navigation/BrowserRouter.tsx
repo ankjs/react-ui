@@ -3,49 +3,46 @@ import React, { lazy, Suspense, useMemo } from 'react';
 import {
   createBrowserRouter,
   RouterProvider,
-  Navigate,
-  useLocation,
   ScrollRestoration
 } from 'react-router-dom';
 
-import type { BrowserRouterProps, RouterProtectProps } from '../types/browserRouterTypes'
-import useThemeColors from '../hook/useThemeColors'
+import type { BrowserRouterProps } from '../types/browserRouterTypes'
+import useThemeColors from '../hook/useThemeColors';
+import AuthGuard from './AuthGuard';
 
-
-
-
-const AuthGuard: React.FC<RouterProtectProps> = ({
-  children = {},
-  isAllowed = false,
-  redirectTo = "/login"
-}) => {
-  const location = useLocation();
-
-
-  if (!isAllowed) {
-    return <Navigate to={redirectTo} state={{ from: location }} replace />;
-  }
-  return <>{children}</>;
-};
 
 
 
 
 const BrowserRouter: React.FC<BrowserRouterProps> = ({
-  routes,
-  authStatus,
+  routes = [],
+  authStatus = "false",
   loginPath = "/login",
   globalFallback = <div>Loading...</div>,
   style = {}
 }) => {
 
+  if (routes.length === 0) {
+    throw new Error(
+      ` Router Element is undefined; add like this 
+      <BrowserRouter
+       👉 routers=[{
+          path : "/"
+          element: <div>Home components</div> 
+        }, {...}]
+      />
+      routers=[] // messing properties 
+    `
+    );
+  };
+
   const {
     backgroundColor,
-    height="100dvh"
+    height = "100dvh"
   } = style;
 
   const { pageBg } = useThemeColors();
-  
+
   const divStypContener = {
     background: backgroundColor ? backgroundColor : pageBg,
     height,
@@ -54,15 +51,25 @@ const BrowserRouter: React.FC<BrowserRouterProps> = ({
 
 
   const router = useMemo(() => {
-    const routesData = routes.map((route) => {
+
+    const routesData = routes?.map((route) => {
       const {
         path,
         importFunc,
         element,
         fallback,
         scrollType = "same-area",
-        protectRouter = false
+        protectRouter = false,
+        routerType = "link"
       } = route;
+
+
+      if (!path) {
+        throw new Error(
+          `path not defined`
+        )
+      };
+
 
       // যদি importFunc থাকে তবে lazy load করবে, নতুবা সরাসরি element ব্যবহার করবে
       const ComponentToRender = importFunc ? lazy(importFunc) : null;
@@ -80,8 +87,13 @@ const BrowserRouter: React.FC<BrowserRouterProps> = ({
           />
           <Suspense fallback={fallback || globalFallback}>
             {protectRouter ? (
-              <AuthGuard isAllowed={authStatus} redirectTo={loginPath}>
-                {element || (ComponentToRender && <ComponentToRender />)}
+              <AuthGuard
+                isAllowed={authStatus}
+                redirectTo={loginPath}
+              >
+                {
+                  element || (ComponentToRender && <ComponentToRender />)
+                }
               </AuthGuard>
             ) : (
               element || (ComponentToRender && <ComponentToRender />)
@@ -89,16 +101,13 @@ const BrowserRouter: React.FC<BrowserRouterProps> = ({
           </Suspense>
         </div>
       );
-
       return { path, element: finalElement };
     });
-
     return createBrowserRouter(routesData);
-  }, [routes, authStatus, loginPath, globalFallback]);
 
+  }, [routes, authStatus, loginPath, globalFallback]);
   return <RouterProvider router={router} />;
 };
-
 export default BrowserRouter;
 
 
