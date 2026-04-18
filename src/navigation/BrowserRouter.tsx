@@ -16,7 +16,7 @@ import AuthGuard from './AuthGuard';
 
 const BrowserRouter: React.FC<BrowserRouterProps> = ({
   routes = [],
-  authStatus = "false",
+  authStatus = false,
   loginPath = "/login",
   globalFallback = <div>Loading...</div>,
   style = {}
