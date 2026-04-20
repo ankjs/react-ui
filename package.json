@@ -1,6 +1,6 @@
 {
   "name": "@ankjs/react-ui",
-  "version": "1.0.30",
+  "version": "1.0.31",
   "description": "A simple React UI Library",
   "main": "index.js",
   "module": "dist/index.esm.js",
