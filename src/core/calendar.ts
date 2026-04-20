@@ -13,15 +13,14 @@ const dayNames = [
 ];
 
 
-export const TODAY = (d: number, m: number, y: number) => {
-  let today = new Date();
-  let currentDay = d ? d : today.getDate();
-  let currentMonth = m ? m : today.getMonth() + 1;
-  let currentYear = y ? y : today.getFullYear();
-
-  let day = currentDay <= 9 ? `0${currentDay}` : currentDay;
-  let month = currentMonth <= 9 ? `0${currentMonth}` : currentMonth;
-  return `${day}-${month}-${currentYear}`;
+export const TODAY = (
+  d: number = new Date().getDate(),
+  m: number = new Date().getMonth() + 1,
+  y: number = new Date().getFullYear()
+): string => {
+  const day = String(d).padStart(2, "0");
+  const month = String(m).padStart(2, "0");
+  return `${day}-${month}-${y}`;
 };
 
 
@@ -30,7 +29,7 @@ export const TODAY = (d: number, m: number, y: number) => {
 type PropsType = {
   month?: number;
   year?: number;
-  event?: number[];
+  event?: any;
 };
 
 export const getFullCalendarGrid = (props: PropsType) => {
