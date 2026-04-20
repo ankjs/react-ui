@@ -1,7 +1,7 @@
 # @ankjs/react-ui
 
 ## 📜 Introduction
-Some Rect Components from for time save.
+A simple React UI Library
 [![NPM Version][npm-image]][npm-url]
 [![NPM Downloads][downloads-image]][downloads-url]
 
@@ -41,11 +41,21 @@ ___
     📜 currently available on colors object 
     
       primary,
-      primaryColor,
-      mainBgColor,
-      pageBg,
-      backgroundColor,
-      color,
+    primaryDeep,
+    primaryColor,
+    pageBg,
+    mainBgColor,
+    backgroundColor,
+    secondryBgColor,
+    color',
+    buttonBgActive,
+    buttonColorActive,
+    buttonBgDeactivate,
+    buttonColorDeactivate,
+    inputColorActive,
+    inputColorDeactivate,
+    inputBgActive,
+    inputBgDeactivate,
 </details>
 
 
@@ -103,7 +113,7 @@ ___
   ```javascript
     // App.js
     // React context like use
-    import {AnkThemeProvider} from '@ankjs/react-ui/provider';
+    import {AnkThemeProvider} from '@ankjs/react-ui';
     
     // if use  won colors object
     // import { colors } from './constants/colors.js';
