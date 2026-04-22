@@ -9,5 +9,6 @@ import EventResult from './calander/EventResult'
 export {
   Button,
   TextInput,
-  CalendarEvent
+  CalendarEvent,
+  EventResult
 }
