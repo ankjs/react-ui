@@ -1,6 +1,6 @@
-import BrowserRouter from './BrowserRouter';
+
 import React from 'react';
-import type { RouterProtectProps } from '../types/browserRouterTypes'
+import type { RouterProtectProps } from '../../types/browserRouterTypes'
 import {
   Navigate,
   useLocation,
@@ -29,10 +29,10 @@ const AuthGuard: React.FC<RouterProtectProps> = ({
   };
 
   if (!isAllowed) {
-    return <Navigate 
-    to={redirectTo}
-    state={{ from: location }} 
-    replace
+    return <Navigate
+      to={redirectTo}
+      state={{ from: location }}
+      replace
     />;
   };
 

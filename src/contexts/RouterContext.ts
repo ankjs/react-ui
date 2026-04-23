@@ -7,4 +7,5 @@ import { createContext } from 'react';
 import type { RouterContexTypes } from '../types/browserRouterTypes';
 
 
-export const RouterContext = createContext<RouterContexTypes | undefined>(undefined);
+const RouterContext = createContext<RouterContexTypes | undefined>(undefined);
+export default RouterContext;

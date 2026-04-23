@@ -7,9 +7,13 @@ import {
 } from 'react-router-dom';
 
 import type { BrowserRouterProps } from '../types/browserRouterTypes'
+import RouterContext from '../contexts/RouterContext'
 import useThemeColors from '../hook/useThemeColors';
-import AuthGuard from './AuthGuard';
-import { RouterContext } from '../contexts/RouterContext'
+import AuthGuard from './parts/AuthGuard';
+import RootLayout from './parts/RootLayout';
+
+
+
 
 
 
@@ -18,7 +22,8 @@ const BrowserRouter: React.FC<BrowserRouterProps> = ({
   authStatus = false,
   loginPath = "/login",
   globalFallback = <div>Loading...</div>,
-  style = {}
+  style = {},
+  children
 }) => {
 
 
@@ -45,7 +50,7 @@ const BrowserRouter: React.FC<BrowserRouterProps> = ({
     scrollBehavior = "smooth"
   } = style;
 
-  const { mainBgColor, color } = useThemeColors();
+  const { mainBgColor, color, pageBg } = useThemeColors();
 
   const divStypContener = {
     background: backgroundColor ? backgroundColor : mainBgColor,
@@ -59,8 +64,20 @@ const BrowserRouter: React.FC<BrowserRouterProps> = ({
 
 
 
+  const routerInfo = useMemo(() => {
+    const routesData = routes?.map((r, i) => {
+      return {
+        key: i,
+        path: r.path,
+        type: r.type || r.routerType,
+        icon: r.icon
+      }
+    })
+    return routesData
+  }, [routes]);
+
   const router = useMemo(() => {
-    const routesData = routes?.map((route) => {
+    const routesData = routes?.map((route, index) => {
       const {
         path,
         importFunc,
@@ -83,6 +100,7 @@ const BrowserRouter: React.FC<BrowserRouterProps> = ({
 
       const finalElement = (
         <div
+          key={index}
           style={
             divStypContener
           }
@@ -110,8 +128,20 @@ const BrowserRouter: React.FC<BrowserRouterProps> = ({
       );
       return { path, element: finalElement };
     });
-    return createBrowserRouter(routesData);
-  }, [routes, authStatus, loginPath, globalFallback]);
+    return createBrowserRouter([
+      {
+        path: "/",
+        element: <RootLayout>{children}</RootLayout>,
+        children: routesData
+      }
+    ]);
+  }, [
+    routes,
+    authStatus,
+    loginPath,
+    globalFallback,
+    children
+  ]);
 
 
 
@@ -120,7 +150,7 @@ const BrowserRouter: React.FC<BrowserRouterProps> = ({
   return (
     <RouterContext.Provider
       value={{
-        routes,
+        routerInfo,
         authStatus,
         loginPath
       }}
