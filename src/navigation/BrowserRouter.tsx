@@ -12,6 +12,7 @@ import AuthGuard from './AuthGuard';
 import { RouterContext } from '../contexts/RouterContext'
 
 
+
 const BrowserRouter: React.FC<BrowserRouterProps> = ({
   routes = [],
   authStatus = false,
@@ -19,6 +20,8 @@ const BrowserRouter: React.FC<BrowserRouterProps> = ({
   globalFallback = <div>Loading...</div>,
   style = {}
 }) => {
+
+
 
   if (routes.length === 0) {
     throw new Error(
@@ -33,6 +36,7 @@ const BrowserRouter: React.FC<BrowserRouterProps> = ({
     `
     );
   };
+
 
   const {
     backgroundColor = "",
@@ -56,7 +60,6 @@ const BrowserRouter: React.FC<BrowserRouterProps> = ({
 
 
   const router = useMemo(() => {
-
     const routesData = routes?.map((route) => {
       const {
         path,
@@ -108,8 +111,11 @@ const BrowserRouter: React.FC<BrowserRouterProps> = ({
       return { path, element: finalElement };
     });
     return createBrowserRouter(routesData);
-
   }, [routes, authStatus, loginPath, globalFallback]);
+
+
+
+
 
   return (
     <RouterContext.Provider
