@@ -6,7 +6,7 @@ import {
   ScrollRestoration
 } from 'react-router-dom';
 
-import type { BrowserRouterProps } from '../types/browserRouterTypes'
+import type { BrowserRouterProps, RouteItem } from '../types/browserRouterTypes'
 import RouterContext from '../contexts/RouterContext'
 import useThemeColors from '../hook/useThemeColors';
 import AuthGuard from './parts/AuthGuard';
@@ -65,7 +65,7 @@ const BrowserRouter: React.FC<BrowserRouterProps> = ({
 
 
   const routerInfo = useMemo(() => {
-    const routesData = routes?.map((r, i) => {
+    const routesData: RouteItem[] = routes?.map((r, i) => {
       return {
         key: i,
         path: r.path,
@@ -76,6 +76,8 @@ const BrowserRouter: React.FC<BrowserRouterProps> = ({
     return routesData
   }, [routes]);
 
+
+
   const router = useMemo(() => {
     const routesData = routes?.map((route, index) => {
       const {
@@ -85,7 +87,6 @@ const BrowserRouter: React.FC<BrowserRouterProps> = ({
         fallback,
         scrollType = "same-area",
         protectRouter = false,
-        routerType = "link"
       } = route;
 
 
@@ -99,12 +100,7 @@ const BrowserRouter: React.FC<BrowserRouterProps> = ({
       const ComponentToRender = importFunc ? lazy(importFunc) : null;
 
       const finalElement = (
-        <div
-          key={index}
-          style={
-            divStypContener
-          }
-        >
+        <>
           <ScrollRestoration
             getKey={(location) =>
               scrollType === "reset" ? location.key : "app-global-scroll"
@@ -124,7 +120,7 @@ const BrowserRouter: React.FC<BrowserRouterProps> = ({
               element || (ComponentToRender && <ComponentToRender />)
             )}
           </Suspense>
-        </div>
+        </>
       );
       return { path, element: finalElement };
     });
@@ -140,7 +136,7 @@ const BrowserRouter: React.FC<BrowserRouterProps> = ({
     authStatus,
     loginPath,
     globalFallback,
-    children
+    children,
   ]);
 
 
@@ -155,7 +151,14 @@ const BrowserRouter: React.FC<BrowserRouterProps> = ({
         loginPath
       }}
     >
-      <RouterProvider router={router} />
+      <div
+        key={index}
+        style={
+          divStypContener
+        }
+      >
+        <RouterProvider router={router} />
+      </div>
     </RouterContext.Provider>
   )
 };
