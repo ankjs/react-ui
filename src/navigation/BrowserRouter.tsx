@@ -100,7 +100,7 @@ const BrowserRouter: React.FC<BrowserRouterProps> = ({
       const ComponentToRender = importFunc ? lazy(importFunc) : null;
 
       const finalElement = (
-        <>
+        <div key={index}>
           <ScrollRestoration
             getKey={(location) =>
               scrollType === "reset" ? location.key : "app-global-scroll"
@@ -120,7 +120,7 @@ const BrowserRouter: React.FC<BrowserRouterProps> = ({
               element || (ComponentToRender && <ComponentToRender />)
             )}
           </Suspense>
-        </>
+        </div>
       );
       return { path, element: finalElement };
     });
@@ -152,7 +152,6 @@ const BrowserRouter: React.FC<BrowserRouterProps> = ({
       }}
     >
       <div
-        key={index}
         style={
           divStypContener
         }

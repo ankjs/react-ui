@@ -51,8 +51,8 @@ export type RouterContexTypes = {
 };
 
 export type RouteItem = {
-  key: number;
-  path: string; // ❗ MUST string
+  key?: number;
+  path?: string; // ❗ MUST string
   name?: string;
 };
 export type RouterLayoutProps= {
