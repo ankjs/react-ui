@@ -1,0 +1,12 @@
+.ankjs-main-page-view {
+  
+  scrollbar-width: none;
+  /* Firefox */
+      
+}
+
+.ankjs-main-page-view ::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari */
+  
+}

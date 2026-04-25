@@ -1,3 +1,4 @@
+import './parts/hidescrollsidebar.css';
 
 import React, { lazy, Suspense, useMemo } from 'react';
 import {
@@ -30,7 +31,9 @@ const BrowserRouter: React.FC<BrowserRouterProps> = ({
 
   if (routes.length === 0) {
     throw new Error(
-      ` Router Element is undefined; add like this 
+      ` 
+       * routes not defined
+      Router Element is undefined; add like this 
       <BrowserRouter
        👉 routers=[{
           path : "/"
@@ -45,21 +48,30 @@ const BrowserRouter: React.FC<BrowserRouterProps> = ({
 
   const {
     backgroundColor = "",
+    width = "100%",
     height = "100dvh",
     overflow = 'scroll',
-    scrollBehavior = "smooth"
+    scrollBehavior = "smooth",
+    boxSizing = "border-box"
   } = style;
 
   const { mainBgColor, color, pageBg } = useThemeColors();
 
-  const divStypContener = {
-    background: backgroundColor ? backgroundColor : mainBgColor,
-    color: style.color ? style.color : color,
-    height,
-    overflow,
-    scrollBehavior,
-    ...style
-  };
+  // 🔹 UI container style (FIXED)
+  const divStypContener = useMemo(() => {
+    const obj = {
+      background: backgroundColor ? backgroundColor : mainBgColor,
+      color: style.color ? style.color : color,
+      minHeight: height,
+      width,
+      scrollBehavior,
+      border: "solid 3px pink",
+      boxSizing,
+      overflow,
+      ...style
+    }
+    return obj
+  }, [backgroundColor, mainBgColor, height, style, color, scrollBehavior]);
 
 
 
@@ -78,17 +90,15 @@ const BrowserRouter: React.FC<BrowserRouterProps> = ({
 
 
 
-  const router = useMemo(() => {
-    const routesData = routes?.map((route, index) => {
+  const routesData = useMemo(() => {
+    return routes?.map((route, index) => {
       const {
         path,
         importFunc,
         element,
         fallback,
-        scrollType = "same-area",
         protectRouter = false,
       } = route;
-
 
       if (!path) {
         throw new Error(
@@ -100,14 +110,9 @@ const BrowserRouter: React.FC<BrowserRouterProps> = ({
       const ComponentToRender = importFunc ? lazy(importFunc) : null;
 
       const finalElement = (
-        <div key={index}>
-          <ScrollRestoration
-            getKey={(location) =>
-              scrollType === "reset" ? location.key : "app-global-scroll"
-            }
-          />
-          <Suspense fallback={fallback || globalFallback}>
-            {protectRouter ? (
+        <Suspense fallback={fallback || globalFallback}>
+          {
+            protectRouter ? (
               <AuthGuard
                 isAllowed={authStatus}
                 redirectTo={loginPath}
@@ -118,47 +123,40 @@ const BrowserRouter: React.FC<BrowserRouterProps> = ({
               </AuthGuard>
             ) : (
               element || (ComponentToRender && <ComponentToRender />)
-            )}
-          </Suspense>
-        </div>
+            )
+
+          }
+        </Suspense>
       );
       return { path, element: finalElement };
     });
-    return createBrowserRouter([
-      {
-        path: "/",
-        element: <RootLayout>{children}</RootLayout>,
-        children: routesData
-      }
-    ]);
-  }, [
-    routes,
-    authStatus,
-    loginPath,
-    globalFallback,
-    children,
-  ]);
+  }, [routes, authStatus, loginPath, globalFallback]);
 
+
+  // 🔹 router create
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: (
+        <RootLayout>
+          {children} {/* Navbar */}
+        </RootLayout>
+      ),
+      children: routesData
+    }
+  ]);
 
 
 
 
   return (
     <RouterContext.Provider
-      value={{
-        routerInfo,
-        authStatus,
-        loginPath
-      }}
+      value={{ routerInfo, authStatus, loginPath }}
     >
-      <div
-        style={
-          divStypContener
-        }
-      >
+      <div style={divStypContener} className="ankjs-main-page-view">
         <RouterProvider router={router} />
       </div>
-    </RouterContext.Provider>
+    </RouterContext.Provider >
   )
 };
 export default BrowserRouter;

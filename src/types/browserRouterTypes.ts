@@ -22,7 +22,7 @@ export interface RouteConfig {
 };
 
 export interface BrowserRouterProps {
-  routes: RouteConfig[];
+  routes?: RouteConfig[];
   authStatus?: boolean;
   loginPath?: string;
   globalFallback?: ReactNode;
@@ -32,9 +32,9 @@ export interface BrowserRouterProps {
 
 
 export type RouterProtectProps = {
-  children: ReactNode;
-  redirectTo: string;
-  isAllowed: boolean;
+  children?: ReactNode;
+  redirectTo?: string;
+  isAllowed?: boolean;
 };
 
 export interface RouterInfoConfig {
@@ -47,7 +47,7 @@ export interface RouterInfoConfig {
 export type RouterContexTypes = {
   routerInfo?: RouterInfoConfig[],
   authStatus?: boolean,
-  loginPath: string,
+  loginPath?: string,
 };
 
 export type RouteItem = {
@@ -55,6 +55,6 @@ export type RouteItem = {
   path?: string; // ❗ MUST string
   name?: string;
 };
-export type RouterLayoutProps= {
+export type RouterLayoutProps = {
   children?: ReactNode;
 };

@@ -28,7 +28,7 @@ const AnkThemeProvider = (props: ThemeProviderProps) => {
     defaultThemeMode = "system",
     autoApply = true,
     style = {},
-    overflow = 'scroll',
+    overflow = 'hidden',
     backgroundColor = "pink",
     color = "black"
   } = props;
