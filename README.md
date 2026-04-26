@@ -40,7 +40,7 @@ ___
    
     📜 currently available on colors object 
     
-      primary,
+    primary,
     primaryDeep,
     primaryColor,
     pageBg,
@@ -113,7 +113,7 @@ ___
   ```javascript
     // App.js
     // React context like use
-    import {AnkThemeProvider} from '@ankjs/react-ui';
+    import { AnkThemeProvider } from '@ankjs/react-ui';
     
     // if use  won colors object
     // import { colors } from './constants/colors.js';
