@@ -1,0 +1,9 @@
+.ankjs-main-browser-page {
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+.ankjs-main-browser-page::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari */
+}

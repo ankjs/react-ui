@@ -5,7 +5,7 @@
       
 }
 
-.ankjs-main-page-view ::-webkit-scrollbar {
+.ankjs-main-page-view::-webkit-scrollbar {
   display: none;
   /* Chrome, Safari */
   

@@ -1,4 +1,4 @@
-import './parts/hidescrollsidebar.css';
+import './parts/browser-router.css';
 
 import React, { lazy, Suspense, useMemo } from 'react';
 import {
@@ -153,7 +153,10 @@ const BrowserRouter: React.FC<BrowserRouterProps> = ({
     <RouterContext.Provider
       value={{ routerInfo, authStatus, loginPath }}
     >
-      <div style={divStypContener} className="ankjs-main-page-view">
+      <div 
+      style={divStypContener} 
+      className="ankjs-main-browser-page"
+      >
         <RouterProvider router={router} />
       </div>
     </RouterContext.Provider >

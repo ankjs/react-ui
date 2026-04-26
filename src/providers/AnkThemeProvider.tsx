@@ -28,7 +28,7 @@ const AnkThemeProvider = (props: ThemeProviderProps) => {
     defaultThemeMode = "system",
     autoApply = true,
     style = {},
-    overflow = 'hidden',
+    overflow = 'auto',
     backgroundColor = "pink",
     color = "black"
   } = props;
@@ -121,6 +121,3 @@ const AnkThemeProvider = (props: ThemeProviderProps) => {
   )
 };
 export default AnkThemeProvider;
-
-/*
-      */
