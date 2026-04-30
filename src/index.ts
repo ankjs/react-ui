@@ -1,6 +1,6 @@
 
 
-
+//THIS IS INDEX TYPESCRIPT 
 import AnkThemeProvider from './providers/AnkThemeProvider';
 export default AnkThemeProvider;
 
